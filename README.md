@@ -1,4 +1,6 @@
+[![Python application](https://github.com/nithishhcm/Sentify/actions/workflows/python-app.yml/badge.svg)](https://github.com/nithishhcm/Sentify/actions/workflows/python-app.yml)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 # Sentify
 
 A production-quality CLI tool that analyzes user sentiment for movies or books.
