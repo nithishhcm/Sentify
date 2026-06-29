@@ -1,3 +1,4 @@
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 # Sentify
 
 A production-quality CLI tool that analyzes user sentiment for movies or books.
