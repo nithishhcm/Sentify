@@ -1,0 +1,14 @@
+# To install this project and its dependencies, use:
+# pip install -e .
+# Alternatively, you can install dependencies directly:
+# pip install -r requirements.txt
+
+requests==2.31.0
+beautifulsoup4==4.12.3
+textblob==0.18.0.post0
+transformers==4.38.1
+torch==2.2.1
+pandas==2.2.1
+rich==13.7.1
+pytest==8.0.2
+customtkinter==6.0.0

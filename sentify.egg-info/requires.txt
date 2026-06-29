@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+textblob
+transformers
+torch
+pandas
+rich
