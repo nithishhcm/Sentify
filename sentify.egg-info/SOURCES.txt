@@ -1,6 +1,7 @@
 README.md
 setup.py
 sentify/__init__.py
+sentify/__main__.py
 sentify/analyzer.py
 sentify/cli.py
 sentify/display.py

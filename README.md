@@ -51,3 +51,4 @@ Sentify supports two sentiment analysis backends:
    - *Pros*: Uses a fine-tuned transformer model (`distilbert-base-uncased-finetuned-sst-2-english`) which understands context, nuances, and performs significantly better on real-world reviews.
    - *Cons*: Slower to run. Requires downloading the model weights (~260MB) on the first run, and depends on larger packages (`torch` and `transformers`).
 "# Sentify" 
+"# Sentify" 

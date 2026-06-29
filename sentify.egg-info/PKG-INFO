@@ -10,6 +10,7 @@ Requires-Dist: transformers
 Requires-Dist: torch
 Requires-Dist: pandas
 Requires-Dist: rich
+Requires-Dist: customtkinter
 Dynamic: author
 Dynamic: requires-dist
 Dynamic: summary

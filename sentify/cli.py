@@ -1,45 +1,26 @@
-"""
-CLI entry point for sentify.
-"""
 import argparse
-from sentify.scraper import get_reviews
+import sys
+
+from sentify.scraper import get_reviews as fetch_reviews
 from sentify.analyzer import analyze_sentiment
-from sentify.display import render_summary, show_progress, save_report
+from sentify.display import render_summary as show_results
 
 def main():
-    """
-    Main entry point for the CLI.
-    """
-    parser = argparse.ArgumentParser(
-        prog="sentify",
-        description="Analyze user sentiment for movies or books."
-    )
-    
-    parser.add_argument("title", type=str, help="Movie or book title to analyze.")
-    parser.add_argument("--type", choices=["movie", "book"], default="movie", help="Type of item ('movie' or 'book'). Default: movie.")
-    parser.add_argument("--model", choices=["textblob", "distilbert"], default="textblob", help="NLP model to use. Default: textblob.")
-    parser.add_argument("--limit", type=int, default=30, help="Max number of reviews to fetch. Default: 30.")
-    parser.add_argument("--output", type=str, help="Optional: path to save a JSON report.")
-    parser.add_argument("--verbose", action="store_true", help="Show per-review scores.")
+    parser = argparse.ArgumentParser(description="Sentify - Sentiment Analyzer")
+    parser.add_argument("title", help="Title of the movie or book")
+    parser.add_argument("--type", choices=["movie", "book"], default="movie", help="Type of the item (movie/book)")
+    parser.add_argument("--model", choices=["textblob", "distilbert"], default="textblob", help="Model to use for sentiment analysis")
+    parser.add_argument("--limit", type=int, default=30, help="Maximum number of reviews to analyze")
     
     args = parser.parse_args()
     
-    with show_progress(f"Fetching reviews for '{args.title}'...") as progress:
-        progress.add_task("fetch", total=None)
-        reviews = get_reviews(args.title, args.type, args.limit)
-        
-    if not reviews:
-        print(f"No reviews found for {args.type} '{args.title}'.")
-        return
-        
-    with show_progress(f"Analyzing sentiment using {args.model}...") as progress:
-        progress.add_task("analyze", total=None)
+    try:
+        reviews = fetch_reviews(args.title, args.type, args.limit)
         analysis = analyze_sentiment(reviews, args.model)
-        
-    render_summary(args.title, args.type, args.model, analysis, args.verbose, reviews)
-    
-    if args.output:
-        save_report(args.output, args.title, args.type, args.model, analysis)
+        show_results(args.title, args.type, args.model, analysis)
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
