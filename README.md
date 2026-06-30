@@ -55,3 +55,6 @@ Sentify supports two sentiment analysis backends:
    - *Cons*: Slower to run. Requires downloading the model weights (~260MB) on the first run, and depends on larger packages (`torch` and `transformers`).
 "# Sentify" 
 "# Sentify" 
+
+
+<img width="1205" height="766" alt="image" src="https://github.com/user-attachments/assets/6d98a180-2b71-4ba9-a13e-a89ea4172878" />
